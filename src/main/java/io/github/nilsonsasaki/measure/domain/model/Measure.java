@@ -7,7 +7,9 @@ public class Measure {
 
     private long id;
     private long irradiationId;
+
     private long sourceId;
+
     private MeasureType measureType;
     private float annual;
     private float jan;
@@ -23,12 +25,11 @@ public class Measure {
     private float nov;
     private float dec;
 
-    public Measure(Long id, Long irradiationId,Long sourceId, Float annual, Float jan, Float feb,
+    public Measure(Long id, Long irradiationId, Float annual, Float jan, Float feb,
                    Float mar, Float apr, Float may, Float jun, Float jul,
                    Float aug, Float sep, Float oct, Float nov, Float dec) {
         if (id == null) throw new IllegalNullArgumentException("id");
         if (irradiationId == null) throw new IllegalNullArgumentException("measureId");
-        if (sourceId == null) throw new IllegalNullArgumentException("sourceId");
         if (annual == null) throw new IllegalNullArgumentException("annual");
         if (jan == null) throw new IllegalNullArgumentException("jan");
         if (feb == null) throw new IllegalNullArgumentException("feb");
@@ -45,7 +46,6 @@ public class Measure {
 
         this.id = id;
         this.irradiationId = irradiationId;
-        this.sourceId = sourceId;
         this.annual = annual;
         this.jan = jan;
         this.feb = feb;
@@ -58,138 +58,6 @@ public class Measure {
         this.sep = sep;
         this.oct = oct;
         this.nov = nov;
-        this.dec = dec;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public long getIrradiationId() {
-        return irradiationId;
-    }
-
-    public void setIrradiationId(long irradiationId) {
-        this.irradiationId = irradiationId;
-    }
-
-    public long getSourceId() {
-        return sourceId;
-    }
-
-    public void setSourceId(long sourceId) {
-        this.sourceId = sourceId;
-    }
-
-    public MeasureType getMeasureType() {
-        return measureType;
-    }
-
-    public void setMeasureType(MeasureType measureType) {
-        this.measureType = measureType;
-    }
-
-    public float getAnnual() {
-        return annual;
-    }
-
-    public void setAnnual(float annual) {
-        this.annual = annual;
-    }
-
-    public float getJan() {
-        return jan;
-    }
-
-    public void setJan(float jan) {
-        this.jan = jan;
-    }
-
-    public float getFeb() {
-        return feb;
-    }
-
-    public void setFeb(float feb) {
-        this.feb = feb;
-    }
-
-    public float getMar() {
-        return mar;
-    }
-
-    public void setMar(float mar) {
-        this.mar = mar;
-    }
-
-    public float getApr() {
-        return apr;
-    }
-
-    public void setApr(float apr) {
-        this.apr = apr;
-    }
-
-    public float getMay() {
-        return may;
-    }
-
-    public void setMay(float may) {
-        this.may = may;
-    }
-
-    public float getJun() {
-        return jun;
-    }
-
-    public void setJun(float jun) {
-        this.jun = jun;
-    }
-
-    public float getJul() {
-        return jul;
-    }
-
-    public void setJul(float jul) {
-        this.jul = jul;
-    }
-
-    public float getAug() {
-        return aug;
-    }
-
-    public void setAug(float aug) {
-        this.aug = aug;
-    }
-
-    public float getSep() {
-        return sep;
-    }
-
-    public void setSep(float sep) {
-        this.sep = sep;
-    }
-
-    public float getOct() {
-        return oct;
-    }
-
-    public void setOct(float oct) {
-        this.oct = oct;
-    }
-
-    public float getNov() {
-        return nov;
-    }
-
-    public void setNov(float nov) {
-        this.nov = nov;
-    }
-
-    public float getDec() {
-        return dec;
-    }
-
-    public void setDec(float dec) {
         this.dec = dec;
     }
 
@@ -197,9 +65,7 @@ public class Measure {
     public String toString() {
         return "Measure{" +
                 "id=" + id +
-                ", irradiationId=" + irradiationId +
-                ", sourceId=" + sourceId +
-                ", measureType=" + measureType +
+                ", measureId=" + irradiationId +
                 ", annual=" + annual +
                 ", jan=" + jan +
                 ", feb=" + feb +
