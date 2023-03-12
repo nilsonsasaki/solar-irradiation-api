@@ -17,6 +17,9 @@ public class DatabaseIrradiation {
     @Column(name = "id")
     private long id;
 
+    @Column(unique = true)
+    private String externalId;
+
     @ManyToOne
     @JoinColumn(name = "source_id")
     private DatabaseSource sourceId;
@@ -49,6 +52,14 @@ public class DatabaseIrradiation {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public DatabaseSource getSourceId() {

@@ -12,6 +12,9 @@ public class DatabaseUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private String externalId;
+
     @Column(nullable = false)
     private String name;
 
@@ -33,6 +36,14 @@ public class DatabaseUser {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public String getName() {

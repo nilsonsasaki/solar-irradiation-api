@@ -14,6 +14,9 @@ public class DatabaseSource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(unique = true)
+    private String externalId;
+
     @Column
     private String source;
 
@@ -39,6 +42,14 @@ public class DatabaseSource {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public String getSource() {
