@@ -13,6 +13,9 @@ public class DatabaseLocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private String externalId;
+
     @ManyToOne
     @JoinColumn(name = "source_id")
     private DatabaseSource sourceId;
@@ -63,6 +66,14 @@ public class DatabaseLocation {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public DatabaseSource getSourceId() {

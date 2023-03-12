@@ -1,23 +1,27 @@
 package io.github.nilsonsasaki.user.domain.model;
 
 import io.github.nilsonsasaki.enums.Role;
+import io.github.nilsonsasaki.exception.domain.IllegalNullArgumentException;
 
 import java.util.Objects;
 
 public class User {
 
-    private final Long id;
+    private Long id;
+    private String externalId;
     private String name;
     private String email;
     private Role role;
 
-    public User(Long id, String name, String email, Role role) {
-        if (id == null) throw new NullPointerException("id cannot be null");
-        if (name == null) throw new NullPointerException("name cannot be null");
-        if (email == null) throw new NullPointerException("email cannot be null");
-        if (role == null) throw new NullPointerException("role cannot be null");
+    public User(Long id, String externalId, String name, String email, Role role) {
+        if (id == null) throw new IllegalNullArgumentException("id");
+        if (externalId == null) throw new IllegalNullArgumentException("externalId");
+        if (name == null) throw new IllegalNullArgumentException("name");
+        if (email == null) throw new IllegalNullArgumentException("email");
+        if (role == null) throw new IllegalNullArgumentException("role");
 
         this.id = id;
+        this.externalId = externalId;
         this.name = name;
         this.email = email;
         this.role = role;
@@ -25,6 +29,18 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
     }
 
     public String getName() {
@@ -66,11 +82,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id.equals(user.id) && name.equals(user.name) && email.equals(user.email) && role == user.role;
+        return id.equals(user.id) && externalId.equals(user.externalId) && name.equals(user.name) && email.equals(user.email) && role == user.role;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, role);
+        return Objects.hash(id, externalId, name, email, role);
     }
 }
