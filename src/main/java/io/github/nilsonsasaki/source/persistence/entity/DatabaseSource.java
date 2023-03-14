@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Table(name = "t_source")
 @Entity
@@ -35,6 +36,30 @@ public class DatabaseSource {
 
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime updatedAt;
+
+    public DatabaseSource() {
+    }
+
+    public DatabaseSource(String externalId, String source, LocalDate releaseDate, String url, LocalDateTime createdAt, DatabaseUser createdBy, LocalDateTime updatedAt) {
+        this.externalId = externalId;
+        this.source = source;
+        this.releaseDate = releaseDate;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
+
+    public DatabaseSource(long id, String externalId, String source, LocalDate releaseDate, String url, LocalDateTime createdAt, DatabaseUser createdBy, LocalDateTime updatedAt) {
+        this.id = id;
+        this.externalId = externalId;
+        this.source = source;
+        this.releaseDate = releaseDate;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
 
     public long getId() {
         return id;
@@ -98,5 +123,18 @@ public class DatabaseSource {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DatabaseSource that = (DatabaseSource) o;
+        return id == that.id && externalId.equals(that.externalId) && source.equals(that.source) && releaseDate.equals(that.releaseDate) && Objects.equals(url, that.url) && createdAt.equals(that.createdAt) && createdBy.equals(that.createdBy) && updatedAt.equals(that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, externalId, source, releaseDate, url, createdAt, createdBy, updatedAt);
     }
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Table(name = "t_irradiation")
 @Entity
@@ -45,6 +46,35 @@ public class DatabaseIrradiation {
 
     @Column(nullable = false)
     private String updatedAt;
+
+
+    public DatabaseIrradiation() {
+    }
+
+    public DatabaseIrradiation(String externalId, DatabaseSource sourceId, List<DatabaseMeasure> measures, String country, float latitude, float longitude, String createdAt, DatabaseUser createdBy, String updatedAt) {
+        this.externalId = externalId;
+        this.sourceId = sourceId;
+        this.measures = measures;
+        this.country = country;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
+
+    public DatabaseIrradiation(long id, String externalId, DatabaseSource sourceId, List<DatabaseMeasure> measures, String country, float latitude, float longitude, String createdAt, DatabaseUser createdBy, String updatedAt) {
+        this.id = id;
+        this.externalId = externalId;
+        this.sourceId = sourceId;
+        this.measures = measures;
+        this.country = country;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
 
     public long getId() {
         return id;
@@ -124,5 +154,18 @@ public class DatabaseIrradiation {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DatabaseIrradiation that = (DatabaseIrradiation) o;
+        return id == that.id && Float.compare(that.latitude, latitude) == 0 && Float.compare(that.longitude, longitude) == 0 && externalId.equals(that.externalId) && sourceId.equals(that.sourceId) && measures.equals(that.measures) && country.equals(that.country) && createdAt.equals(that.createdAt) && createdBy.equals(that.createdBy) && updatedAt.equals(that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, externalId, sourceId, measures, country, latitude, longitude, createdAt, createdBy, updatedAt);
     }
 }

@@ -5,6 +5,8 @@ import io.github.nilsonsasaki.source.persistence.entity.DatabaseSource;
 import io.github.nilsonsasaki.user.persistence.entity.DatabaseUser;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Table(name = "t_measure")
 @Entity
 public class DatabaseMeasure {
@@ -72,6 +74,38 @@ public class DatabaseMeasure {
 
     @Column(nullable = false)
     private String updatedAt;
+
+    public DatabaseMeasure() {
+    }
+
+    public DatabaseMeasure(long id, DatabaseIrradiation irradiationId,
+                           DatabaseSource sourceId, String measureType,
+                           float annual, float jan, float feb, float mar,
+                           float apr, float may, float jun, float jul,
+                           float aug, float sep, float oct, float nov,
+                           float dec, String createdAt, DatabaseUser createdBy,
+                           String updatedAt) {
+        this.id = id;
+        this.irradiationId = irradiationId;
+        this.sourceId = sourceId;
+        this.measureType = measureType;
+        this.annual = annual;
+        this.jan = jan;
+        this.feb = feb;
+        this.mar = mar;
+        this.apr = apr;
+        this.may = may;
+        this.jun = jun;
+        this.jul = jul;
+        this.aug = aug;
+        this.sep = sep;
+        this.oct = oct;
+        this.nov = nov;
+        this.dec = dec;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
 
     public long getId() {
         return id;
@@ -231,5 +265,18 @@ public class DatabaseMeasure {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DatabaseMeasure that = (DatabaseMeasure) o;
+        return id == that.id && Float.compare(that.annual, annual) == 0 && Float.compare(that.jan, jan) == 0 && Float.compare(that.feb, feb) == 0 && Float.compare(that.mar, mar) == 0 && Float.compare(that.apr, apr) == 0 && Float.compare(that.may, may) == 0 && Float.compare(that.jun, jun) == 0 && Float.compare(that.jul, jul) == 0 && Float.compare(that.aug, aug) == 0 && Float.compare(that.sep, sep) == 0 && Float.compare(that.oct, oct) == 0 && Float.compare(that.nov, nov) == 0 && Float.compare(that.dec, dec) == 0 && irradiationId.equals(that.irradiationId) && sourceId.equals(that.sourceId) && measureType.equals(that.measureType) && createdAt.equals(that.createdAt) && createdBy.equals(that.createdBy) && updatedAt.equals(that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, irradiationId, sourceId, measureType, annual, jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec, createdAt, createdBy, updatedAt);
     }
 }

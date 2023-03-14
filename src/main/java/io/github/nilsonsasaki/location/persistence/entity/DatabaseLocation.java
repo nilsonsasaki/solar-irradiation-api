@@ -4,6 +4,8 @@ import io.github.nilsonsasaki.source.persistence.entity.DatabaseSource;
 import io.github.nilsonsasaki.user.persistence.entity.DatabaseUser;
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Table(name = "t_location")
 @Entity
 
@@ -21,7 +23,7 @@ public class DatabaseLocation {
     private DatabaseSource sourceId;
 
     @Column(nullable = false)
-    private String location;
+    private String locationName;
 
     @Column(nullable = false)
     private String city;
@@ -60,6 +62,46 @@ public class DatabaseLocation {
     @Column(nullable = false)
     private String updatedAt;
 
+    public DatabaseLocation() {
+    }
+
+    public DatabaseLocation(String externalId, DatabaseSource sourceId, String locationName, String city, String state, String country, String neighbourhood, String subDistrict, String district, float latitude, float longitude, float altitude, String createdAt, DatabaseUser createdBy, String updatedAt) {
+        this.externalId = externalId;
+        this.sourceId = sourceId;
+        this.locationName = locationName;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.neighbourhood = neighbourhood;
+        this.subDistrict = subDistrict;
+        this.district = district;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.altitude = altitude;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
+
+    public DatabaseLocation(Long id, String externalId, DatabaseSource sourceId, String locationName, String city, String state, String country, String neighbourhood, String subDistrict, String district, float latitude, float longitude, float altitude, String createdAt, DatabaseUser createdBy, String updatedAt) {
+        this.id = id;
+        this.externalId = externalId;
+        this.sourceId = sourceId;
+        this.locationName = locationName;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.neighbourhood = neighbourhood;
+        this.subDistrict = subDistrict;
+        this.district = district;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.altitude = altitude;
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+    }
+
     public Long getId() {
         return id;
     }
@@ -84,12 +126,12 @@ public class DatabaseLocation {
         this.sourceId = sourceId;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public String getCity() {
@@ -186,5 +228,18 @@ public class DatabaseLocation {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DatabaseLocation that = (DatabaseLocation) o;
+        return Float.compare(that.latitude, latitude) == 0 && Float.compare(that.longitude, longitude) == 0 && Float.compare(that.altitude, altitude) == 0 && id.equals(that.id) && externalId.equals(that.externalId) && sourceId.equals(that.sourceId) && locationName.equals(that.locationName) && city.equals(that.city) && state.equals(that.state) && country.equals(that.country) && Objects.equals(neighbourhood, that.neighbourhood) && Objects.equals(subDistrict, that.subDistrict) && Objects.equals(district, that.district) && createdAt.equals(that.createdAt) && createdBy.equals(that.createdBy) && updatedAt.equals(that.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, externalId, sourceId, locationName, city, state, country, neighbourhood, subDistrict, district, latitude, longitude, altitude, createdAt, createdBy, updatedAt);
     }
 }
