@@ -132,4 +132,25 @@ public class UserDaoTest {
         assertTrue(repository.existsByExternalId(user.getExternalId()));
     }
 
+    @Test
+    public void should_find_latest_update_dateTime(){
+        DatabaseUser user = repository.save(new DatabaseUser(
+                1L,
+                "externalId",
+                "name",
+                "email",
+                "role",
+                LocalDateTime.of(2023, Month.JANUARY, 24, 23, 59),
+                LocalDateTime.of(2023, Month.MAY, 24, 23, 59)));
+        DatabaseUser user2 = repository.save(new DatabaseUser(
+                2L,
+                "externalId2",
+                "name",
+                "email2",
+                "role",
+                LocalDateTime.of(2023, Month.JANUARY, 24, 23, 59),
+                LocalDateTime.of(2023, Month.AUGUST, 24, 23, 59)));
+        assertEquals(user2.getUpdatedAt(), repository.findLatestUpdate());
+    }
+
 }
