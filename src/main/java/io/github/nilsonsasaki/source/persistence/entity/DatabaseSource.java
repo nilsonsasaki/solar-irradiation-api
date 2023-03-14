@@ -21,20 +21,23 @@ public class DatabaseSource {
     @Column
     private String source;
 
-    @Column(name = "date", nullable = false, columnDefinition = "DATE")
+    @Column(name = "date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private LocalDate releaseDate;
 
     @Column
     private String url;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "created_by")
     private DatabaseUser createdBy;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime updatedAt;
 
     public DatabaseSource() {
@@ -130,11 +133,11 @@ public class DatabaseSource {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DatabaseSource that = (DatabaseSource) o;
-        return id == that.id && externalId.equals(that.externalId) && source.equals(that.source) && releaseDate.equals(that.releaseDate) && Objects.equals(url, that.url) && createdAt.equals(that.createdAt) && createdBy.equals(that.createdBy) && updatedAt.equals(that.updatedAt);
+        return id == that.id && externalId.equals(that.externalId) && source.equals(that.source) && releaseDate.equals(that.releaseDate) && Objects.equals(url, that.url) && createdAt.equals(that.createdAt) && updatedAt.equals(that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, externalId, source, releaseDate, url, createdAt, createdBy, updatedAt);
+        return Objects.hash(id, externalId, source, releaseDate, url, createdAt, updatedAt);
     }
 }
