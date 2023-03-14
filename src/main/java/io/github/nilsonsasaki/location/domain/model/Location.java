@@ -7,7 +7,7 @@ public class Location {
     private Long id;
     private String externalId;
     private long sourceId;
-    private String location;
+    private String locationName;
     private String city;
     private String state;
     private String country;
@@ -18,12 +18,12 @@ public class Location {
     private float longitude;
     private float altitude;
 
-    public Location(Long id,String externalId, Long sourceId, String location, String city,
+    public Location(Long id, String externalId, Long sourceId, String locationName, String city,
                     String state, String country, String neighbourhood, String subDistrict,
                     String district, Float latitude, Float longitude, Float altitude) {
         if (id == null) throw new IllegalNullArgumentException("id");
         if (externalId == null) throw new IllegalNullArgumentException("externalId");
-        if (location == null) throw new IllegalNullArgumentException("location");
+        if (locationName == null) throw new IllegalNullArgumentException("location");
         if (city == null) throw new IllegalNullArgumentException("city");
         if (state == null) throw new IllegalNullArgumentException("state");
         if (country == null) throw new IllegalNullArgumentException("country");
@@ -34,7 +34,7 @@ public class Location {
         this.id = id;
         this.externalId=externalId;
         this.sourceId = sourceId;
-        this.location = location;
+        this.locationName = locationName;
         this.city = city;
         this.state = state;
         this.country = country;
@@ -70,12 +70,12 @@ public class Location {
         this.sourceId = sourceId;
     }
 
-    public String getLocation() {
-        return location;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public String getCity() {
@@ -155,7 +155,7 @@ public class Location {
     public String toString() {
         return "Location{" +
                 "id=" + id +
-                ", location='" + location + '\'' +
+                ", location='" + locationName + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
