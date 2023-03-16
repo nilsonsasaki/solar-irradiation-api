@@ -4,6 +4,7 @@ import io.github.nilsonsasaki.source.persistence.entity.DatabaseSource;
 import io.github.nilsonsasaki.user.persistence.entity.DatabaseUser;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Table(name = "t_location")
@@ -53,19 +54,21 @@ public class DatabaseLocation {
     private float altitude;
 
     @Column(nullable = false)
-    private String createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "created_by")
     private DatabaseUser createdBy;
 
     @Column(nullable = false)
-    private String updatedAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime updatedAt;
 
     public DatabaseLocation() {
     }
 
-    public DatabaseLocation(String externalId, DatabaseSource sourceId, String locationName, String city, String state, String country, String neighbourhood, String subDistrict, String district, float latitude, float longitude, float altitude, String createdAt, DatabaseUser createdBy, String updatedAt) {
+    public DatabaseLocation(String externalId, DatabaseSource sourceId, String locationName, String city, String state, String country, String neighbourhood, String subDistrict, String district, float latitude, float longitude, float altitude, LocalDateTime createdAt, DatabaseUser createdBy, LocalDateTime updatedAt) {
         this.externalId = externalId;
         this.sourceId = sourceId;
         this.locationName = locationName;
@@ -83,7 +86,7 @@ public class DatabaseLocation {
         this.updatedAt = updatedAt;
     }
 
-    public DatabaseLocation(Long id, String externalId, DatabaseSource sourceId, String locationName, String city, String state, String country, String neighbourhood, String subDistrict, String district, float latitude, float longitude, float altitude, String createdAt, DatabaseUser createdBy, String updatedAt) {
+    public DatabaseLocation(Long id, String externalId, DatabaseSource sourceId, String locationName, String city, String state, String country, String neighbourhood, String subDistrict, String district, float latitude, float longitude, float altitude, LocalDateTime createdAt, DatabaseUser createdBy, LocalDateTime updatedAt) {
         this.id = id;
         this.externalId = externalId;
         this.sourceId = sourceId;
@@ -206,11 +209,11 @@ public class DatabaseLocation {
         this.altitude = altitude;
     }
 
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -222,11 +225,11 @@ public class DatabaseLocation {
         this.createdBy = createdBy;
     }
 
-    public String getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -235,11 +238,11 @@ public class DatabaseLocation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DatabaseLocation that = (DatabaseLocation) o;
-        return Float.compare(that.latitude, latitude) == 0 && Float.compare(that.longitude, longitude) == 0 && Float.compare(that.altitude, altitude) == 0 && id.equals(that.id) && externalId.equals(that.externalId) && sourceId.equals(that.sourceId) && locationName.equals(that.locationName) && city.equals(that.city) && state.equals(that.state) && country.equals(that.country) && Objects.equals(neighbourhood, that.neighbourhood) && Objects.equals(subDistrict, that.subDistrict) && Objects.equals(district, that.district) && createdAt.equals(that.createdAt) && createdBy.equals(that.createdBy) && updatedAt.equals(that.updatedAt);
+        return Float.compare(that.latitude, latitude) == 0 && Float.compare(that.longitude, longitude) == 0 && Float.compare(that.altitude, altitude) == 0 && id.equals(that.id) && externalId.equals(that.externalId) && locationName.equals(that.locationName) && city.equals(that.city) && state.equals(that.state) && country.equals(that.country) && Objects.equals(neighbourhood, that.neighbourhood) && Objects.equals(subDistrict, that.subDistrict) && Objects.equals(district, that.district) && createdAt.equals(that.createdAt) && updatedAt.equals(that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, externalId, sourceId, locationName, city, state, country, neighbourhood, subDistrict, district, latitude, longitude, altitude, createdAt, createdBy, updatedAt);
+        return Objects.hash(id, externalId, locationName, city, state, country, neighbourhood, subDistrict, district, latitude, longitude, altitude, createdAt, updatedAt);
     }
 }
