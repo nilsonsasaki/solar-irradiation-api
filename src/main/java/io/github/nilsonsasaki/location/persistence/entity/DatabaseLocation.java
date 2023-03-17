@@ -16,32 +16,32 @@ public class DatabaseLocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 36)
     private String externalId;
 
     @ManyToOne
     @JoinColumn(name = "source_id")
     private DatabaseSource sourceId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 64)
     private String locationName;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 64)
     private String city;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2)
     private String state;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2)
     private String country;
 
-    @Column
+    @Column(length = 64)
     private String neighbourhood;
 
-    @Column
+    @Column(length = 64)
     private String subDistrict;
 
-    @Column
+    @Column(length = 64)
     private String district;
 
     @Column(nullable = false)

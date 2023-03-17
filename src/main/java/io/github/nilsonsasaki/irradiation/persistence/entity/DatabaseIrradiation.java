@@ -6,7 +6,6 @@ import io.github.nilsonsasaki.user.persistence.entity.DatabaseUser;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +18,7 @@ public class DatabaseIrradiation {
     @Column(name = "id")
     private long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 36)
     private String externalId;
 
     @ManyToOne
@@ -27,9 +26,9 @@ public class DatabaseIrradiation {
     private DatabaseSource sourceId;
 
     @OneToMany(mappedBy = "irradiationId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DatabaseMeasure> measures = new ArrayList<>();
+    private List<DatabaseMeasure> measures;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2)
     private String country;
 
     @Column(nullable = false)

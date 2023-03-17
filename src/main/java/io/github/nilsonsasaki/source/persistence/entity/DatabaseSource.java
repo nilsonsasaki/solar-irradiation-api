@@ -15,7 +15,7 @@ public class DatabaseSource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 36)
     private String externalId;
 
     @Column

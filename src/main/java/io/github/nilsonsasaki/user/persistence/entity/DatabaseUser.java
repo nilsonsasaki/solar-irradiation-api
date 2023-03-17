@@ -13,16 +13,16 @@ public class DatabaseUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 36)
     private String externalId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 64)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 64)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 3)
     private String role;
 
     @Column(nullable = false)
