@@ -1,7 +1,7 @@
 package io.github.nilsonsasaki.measure.domain.model;
 
-import io.github.nilsonsasaki.enums.MeasureType;
-import io.github.nilsonsasaki.exception.domain.IllegalNullArgumentException;
+import io.github.nilsonsasaki.generic.exception.IllegalNullArgumentException;
+import io.github.nilsonsasaki.irradiation.domain.enums.MeasureType;
 
 public class Measure {
 

@@ -1,4 +1,4 @@
-package io.github.nilsonsasaki.enums;
+package io.github.nilsonsasaki.irradiation.domain.enums;
 
 public enum MeasureType {
     GLOBAL_HORIZONTAL("ghm"),
@@ -9,7 +9,7 @@ public enum MeasureType {
 
     private final String value;
 
-    MeasureType(String value){
+    MeasureType(String value) {
         this.value = value;
     }
 

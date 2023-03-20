@@ -1,6 +1,6 @@
 package io.github.nilsonsasaki.irradiation.domain.model;
 
-import io.github.nilsonsasaki.exception.domain.IllegalNullArgumentException;
+import io.github.nilsonsasaki.generic.exception.IllegalNullArgumentException;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class Irradiation {
         if (latitude == null) throw new IllegalNullArgumentException("latitude");
         if (longitude == null) throw new IllegalNullArgumentException("longitude");
         this.id = id;
-        this.externalId=externalId;
+        this.externalId = externalId;
         this.sourceId = sourceId;
         this.measures = measures;
         this.country = country;

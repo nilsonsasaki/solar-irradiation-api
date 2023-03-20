@@ -1,7 +1,7 @@
 package io.github.nilsonsasaki.user.domain.model;
 
-import io.github.nilsonsasaki.enums.Role;
-import io.github.nilsonsasaki.exception.domain.IllegalNullArgumentException;
+import io.github.nilsonsasaki.generic.exception.IllegalNullArgumentException;
+import io.github.nilsonsasaki.user.domain.enums.Role;
 
 import java.util.Objects;
 
