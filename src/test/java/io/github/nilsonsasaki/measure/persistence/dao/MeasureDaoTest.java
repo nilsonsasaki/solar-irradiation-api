@@ -1,6 +1,6 @@
 package io.github.nilsonsasaki.measure.persistence.dao;
 
-import io.github.nilsonsasaki.enums.MeasureType;
+import io.github.nilsonsasaki.irradiation.domain.enums.MeasureType;
 import io.github.nilsonsasaki.measure.persistence.entity.DatabaseMeasure;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

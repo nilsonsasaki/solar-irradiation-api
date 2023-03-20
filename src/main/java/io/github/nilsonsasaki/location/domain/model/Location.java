@@ -1,6 +1,6 @@
 package io.github.nilsonsasaki.location.domain.model;
 
-import io.github.nilsonsasaki.exception.domain.IllegalNullArgumentException;
+import io.github.nilsonsasaki.generic.exception.IllegalNullArgumentException;
 
 public class Location {
 
@@ -32,7 +32,7 @@ public class Location {
         if (altitude == null) throw new IllegalNullArgumentException("altitude");
 
         this.id = id;
-        this.externalId=externalId;
+        this.externalId = externalId;
         this.sourceId = sourceId;
         this.locationName = locationName;
         this.city = city;

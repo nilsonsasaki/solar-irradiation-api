@@ -1,6 +1,6 @@
 package io.github.nilsonsasaki.source.domain.model;
 
-import io.github.nilsonsasaki.exception.domain.IllegalNullArgumentException;
+import io.github.nilsonsasaki.generic.exception.IllegalNullArgumentException;
 
 public class Source {
 
