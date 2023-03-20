@@ -1,4 +1,4 @@
-package io.github.nilsonsasaki.enums;
+package io.github.nilsonsasaki.user.domain.enums;
 
 public enum Role {
     ADMIN("Adm"),
@@ -7,7 +7,7 @@ public enum Role {
 
     private final String value;
 
-    Role(String value){
+    Role(String value) {
         this.value = value;
     }
 
